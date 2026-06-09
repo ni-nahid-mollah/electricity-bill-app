@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="theme-color" content="#0f172a">
+</head>
+<body>
+
+<div class="background-blur"></div>
+
+<header class="header">
+    <h1>⚡ Electricity Bill</h1>
+    <button id="themeToggle">🌙</button>
+</header>
+
+<nav class="tabs">
+    <button class="tab-btn active" data-tab="calculator">Calculator</button>
+    <button class="tab-btn" data-tab="history">History</button>
+    <button class="tab-btn" data-tab="about">About</button>
+    <button class="tab-btn" data-tab="settings">Settings</button>
+</nav>
+
+<section id="calculator" class="tab-content active">
+
+    <div class="glass-card">
+
+        <h2>Bill Calculator</h2>
+
+        <div class="form-group">
+            <label>হিসাবের তারিখ</label>
+            <input type="date" id="billDate">
+        </div>
+
+        <div class="form-group">
+            <label>নাম</label>
+            <input type="text" id="customerName" placeholder="নাম লিখুন">
+        </div>
+
+        <div class="form-group">
+            <label>বর্তমান মিটার রিডিং</label>
+            <input type="number" id="currentReading">
+        </div>
+
+        <div class="form-group">
+            <label>আগের মিটার রিডিং</label>
+            <input type="number" id="previousReading">
+        </div>
+
+        <div class="form-group">
+            <label>রেট মোড</label>
+            <select id="rateMode">
+                <option value="manual">Manual</option>
+                <option value="auto">Auto Tariff</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>প্রতি ইউনিট রেট</label>
+            <input type="number" id="unitRate" step="0.01">
+        </div>
+
+        <div class="form-group">
+            <label>ভ্যাট (%)</label>
+            <input type="number" id="vat" value="5">
+        </div>
+
+        <div class="form-group">
+            <label>মিটার ভাড়া</label>
+            <select id="meterRent">
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="0">Custom</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>এক্সট্রা চার্জ</label>
+            <input type="number" id="extraCharge" value="0">
+        </div>
+
+        <button id="calculateBtn" class="primary-btn">
+            Calculate Bill
+        </button>
+
+    </div>
+
+    <div class="glass-card result-card">
+
+        <h2>Result</h2>
+
+        <div id="resultArea">
+
+            <p>📅 Date: <span id="rDate">-</span></p>
+
+            <p>👤 Name: <span id="rName">-</span></p>
+
+            <p>🔢 Current Reading:
+                <span id="rCurrent">-</span>
+            </p>
+
+            <p>🔢 Previous Reading:
+                <span id="rPrevious">-</span>
+            </p>
+
+            <p>⚡ Used Unit:
+                <span id="rUnit">-</span>
+            </p>
+
+            <p>💰 Unit Rate:
+                <span id="rRate">-</span>
+            </p>
+
+            <p>💵 Energy Bill:
+                <span id="rEnergy">-</span>
+            </p>
+
+            <p>📊 VAT:
+                <span id="rVat">-</span>
+            </p>
+
+            <p>➕ Extra Charge:
+                <span id="rExtra">-</span>
+            </p>
+
+            <h3>
+                🧾 Total Bill:
+                <span id="rTotal">-</span>
+            </h3>
+
+        </div>
+
+        <div class="action-buttons">
+            <button id="saveBtn">Save</button>
+            <button id="shareBtn">Share</button>
+            <button id="pdfBtn">PDF</button>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="history" class="tab-content">
+
+    <div class="glass-card">
+
+        <h2>History</h2>
+
+        <input
+            type="text"
+            id="searchHistory"
+            placeholder="Search by name..."
+        >
+
+        <div id="historyList"></div>
+
+    </div>
+
+</section>
+
+<section id="about" class="tab-content">
+
+    <div class="glass-card">
+
+        <h2>About Electricity Bill</h2>
+
+        <p>
+            Offline Electricity Bill Calculator
+        </p>
+
+        <h3>Current Tariff</h3>
+
+        <table>
+
+            <tr>
+                <th>Unit</th>
+                <th>Rate</th>
+            </tr>
+
+            <tr>
+                <td>0 - 50</td>
+                <td>4.63</td>
+            </tr>
+
+            <tr>
+                <td>51 - 75</td>
+                <td>5.26</td>
+            </tr>
+
+            <tr>
+                <td>76 - 200</td>
+                <td>8.50</td>
+            </tr>
+
+            <tr>
+                <td>201 - 300</td>
+                <td>9.10</td>
+            </tr>
+
+            <tr>
+                <td>301 - 400</td>
+                <td>9.62</td>
+            </tr>
+
+            <tr>
+                <td>401 - 600</td>
+                <td>15.01</td>
+            </tr>
+
+            <tr>
+                <td>600+</td>
+                <td>17.35</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+<section id="settings" class="tab-content">
+
+    <div class="glass-card">
+
+        <h2>Settings</h2>
+
+        <div class="form-group">
+            <label>Default VAT</label>
+            <input type="number" id="defaultVat" value="5">
+        </div>
+
+        <div class="form-group">
+            <label>Default Extra Charge</label>
+            <input type="number" id="defaultExtra" value="0">
+        </div>
+
+        <button id="saveSettings">
+            Save Settings
+        </button>
+
+    </div>
+
+</section>
+
+<script src="app.js"></script>
+
+</body>
+</html>

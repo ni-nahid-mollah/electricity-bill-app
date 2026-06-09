@@ -1,0 +1,186 @@
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* Background blur effect */
+.background-blur {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top, #38bdf8, transparent 60%),
+                radial-gradient(circle at bottom, #a78bfa, transparent 60%);
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* ===== HEADER ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+}
+
+.header h1 {
+    font-size: 20px;
+}
+
+#themeToggle {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+}
+
+/* ===== TABS ===== */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    margin: 2px;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background: #38bdf8;
+    color: black;
+}
+
+/* ===== TAB CONTENT ===== */
+.tab-content {
+    display: none;
+    padding: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===== GLASS CARD ===== */
+.glass-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ===== INPUTS ===== */
+.form-group {
+    margin-bottom: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+/* ===== BUTTONS ===== */
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    background: #38bdf8;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ===== RESULT ===== */
+.result-card p,
+.result-card h3 {
+    margin: 5px 0;
+}
+
+.result-card h3 {
+    color: #22c55e;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.action-buttons button {
+    flex: 1;
+    margin: 3px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #334155;
+    color: white;
+}
+
+/* ===== HISTORY ===== */
+#historyList {
+    margin-top: 10px;
+}
+
+.history-item {
+    background: rgba(255,255,255,0.08);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ===== DARK MODE (future toggle support) ===== */
+body.light {
+    background: #f1f5f9;
+    color: black;
+}
+
+body.light .glass-card {
+    background: white;
+    color: black;
+}
+
+body.light .tab-btn {
+    background: #e2e8f0;
+    color: black;
+}
